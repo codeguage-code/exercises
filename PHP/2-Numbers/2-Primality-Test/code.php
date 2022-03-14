@@ -13,15 +13,3 @@ function is_prime($n) {
 
    return true;
 }
-var_dump(is_prime(2));
-var_dump(is_prime(3));
-var_dump(is_prime(4));
-var_dump(is_prime(5));
-
-// Argument is <= 1, hence NULL is returned.
-var_dump(is_prime(1));
-var_dump(is_prime(0));
-var_dump(is_prime(-10));
-
-// Argument is not int, hence NULL is returned.
-var_dump(is_prime(2.0));

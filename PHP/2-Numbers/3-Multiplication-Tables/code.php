@@ -2,7 +2,7 @@
 
 $n = rand(1, 100);
 
-echo 'Multiplication table for ', $n, "\n";
+echo 'Multiplication table for ', $n, ":\n";
 
 // Blank line.
 echo "\n";

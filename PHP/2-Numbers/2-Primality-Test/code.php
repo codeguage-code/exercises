@@ -7,9 +7,12 @@ function is_prime($n) {
 
    for ($i = 2; $i < $n - 1; $i++) {
       if ($n % $i === 0) {
+         // $n has a divisor other than 1 and itself.
+         // Hence, return false.
          return false;
       }
    }
 
+   // $n is prime, hence return true.
    return true;
 }

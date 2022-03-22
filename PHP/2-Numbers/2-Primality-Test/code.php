@@ -5,7 +5,7 @@ function is_prime($n) {
       return NULL;
    }
 
-   for ($i = 2; $i < $n - 1; $i++) {
+   for ($i = 2; $i < $n; $i++) {
       if ($n % $i === 0) {
          // $n has a divisor other than 1 and itself.
          // Hence, return false.

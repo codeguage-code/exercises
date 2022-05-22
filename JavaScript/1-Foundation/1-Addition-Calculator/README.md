@@ -1,4 +1,4 @@
 
 # Addition Calculator Exercise
 
-Read the exercise's description at [PHP Foundation — Addition Calculator Exercise](https://www.codeguage.com/courses/php/addition-calculator-exercise).
+Read the exercise's description at [JavaScript Foundation — Addition Calculator Exercise](https://www.codeguage.com/courses/js/addition-calculator-exercise).

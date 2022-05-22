@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Rudimentary Calculator Exercise</title>
+</head>
+<body>
+
+<script>
+
+var x = Number(prompt('x:'));
+var y = Number(prompt('y:'));
+var op = prompt('Operation:');
+
+switch (op) {
+   case 'a':
+      document.write(x + ' + ' + y + ' = ' + (x + y));
+      break;
+   case 's':
+      document.write(x + ' - ' + y + ' = ' + (x - y));
+      break;
+   case 'm':
+      document.write(x + ' * ' + y + ' = ' + (x * y));
+      break;
+   case 'd':
+      document.write(x + ' / ' + y + ' = ' + (x / y));
+      break;
+   case 'e':
+      document.write(x + ' ** ' + y + ' = ' + (x ** y));
+      break;
+   case 'r':
+      document.write(x + ' % ' + y + ' = ' + (x % y));
+      break;
+   default:
+      document.write('Unknown operation');
+}
+
+</script>
+
+</body>
+</html>

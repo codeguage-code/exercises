@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Array Reverse Exercise</title>
+</head>
+<body>
+
+<script>
+
+function arrayReverse(arr) {
+   var temp;
+   var n = arr.length;
+   var mid = n / 2;
+
+   for (var i = 0; i < mid; i++) {
+      temp = arr[i]
+      arr[i] = arr[n - i - 1];
+      arr[n - i - 1] = temp;
+   }
+
+   return arr;
+}
+
+</script>
+
+</body>
+</html>

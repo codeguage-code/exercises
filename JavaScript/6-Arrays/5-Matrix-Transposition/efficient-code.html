@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Matrix Transposition Exercise</title>
+</head>
+<body>
+
+<script>
+
+function transpose(matrix) {
+   var n = matrix.length;
+   var temp;
+
+   for (var i = 0; i < n - 1; i++) {
+      for (var j = i + 1; j < n; j++) {
+         temp = matrix[i][j];
+         matrix[i][j] = matrix[j][i];
+         matrix[j][i] = temp;
+      }
+   }
+
+   return matrix;
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Better Precision Exercise</title>
+</head>
+<body>
+
+<script>
+
+function betterPrecision(num, precision) {
+    var stringifiedNum = num.toPrecision(precision);
+    var index = stringifiedNum.indexOf('e');
+
+    if (index !== -1) {
+        var exp = Number(stringifiedNum.slice(index + 1));
+        if (exp < 5) {
+ return Number(stringifiedNum).toString();
+        }
+    }
+
+    return stringifiedNum;
+}
+
+</script>
+
+</body>
+</html>

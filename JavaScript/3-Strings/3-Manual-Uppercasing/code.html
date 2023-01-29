@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Manual Uppercasing Exercise</title>
+</head>
+<body>
+
+<script>
+
+function toUpperCase(str) {
+   const UPPERCASE_OFFSET = -32;
+   var uppercasedStr = '';
+
+   for (var i = 0; i < str.length; i++) {
+      if ('a' <= str[i] && str[i] <= 'z') {
+         uppercasedStr += String.fromCharCode(str[i].charCodeAt(0) + UPPERCASE_OFFSET);
+      }
+      else {
+         uppercasedStr += str[i];
+      }
+   }
+
+   return uppercasedStr;
+}
+
+</script>
+
+</body>
+</html>

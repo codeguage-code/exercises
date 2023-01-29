@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Square Matrix Class Exercise</title>
+</head>
+<body>
+
+<script>
+
+function SquareMatrix(matrixArray) {
+   // If matrixArray is a number,
+   // Create an n x n matrix
+   if (typeof matrixArray === 'number') {
+      var n = matrixArray;
+      matrixArray = [];
+
+      for (var i = 0; i < n; i++) {
+         matrixArray.push([]);
+         for (var j = 0; j < n; j++) {
+            matrixArray[i].push(0); 
+         }
+      }
+      
+   }
+
+   this.array = matrixArray;
+   this.n = matrixArray.length;
+}
+
+
+// Non-mutating methods
+
+SquareMatrix.prototype.add = function(matrix) {
+   // Initializations
+   var matrixArray = this.array;
+   var secondMatrixArray = matrix.array;
+   var n = this.n;
+
+   // Create a new matrix to represent the sum
+   var sumMatrix = new SquareMatrix(n);
+   var sumMatrixArray = sumMatrix.array;
+
+   for (var i = 0; i < n; i++) {
+      for (var j = 0; j < n; j++) {
+         sumMatrixArray[i][j] = matrixArray[i][j] + secondMatrixArray[i][j];
+      }
+   }
+
+   return sumMatrix;
+}
+
+SquareMatrix.prototype.multiply = function(matrix) {
+   // Initializations
+   var matrixArray = this.array;
+   var secondMatrixArray = matrix.array;
+   var n = this.n;
+
+   // Create a new matrix to represent the product
+   var productMatrix = new SquareMatrix(n);
+   var productMatrixArray = productMatrix.array;
+
+   var sum;
+
+   for (var i = 0; i < n; i++) {
+      for (var j = 0; j < n; j++) {
+         sum = 0;
+         for (var k = 0; k < n; k++) {
+            sum += matrixArray[i][k] * secondMatrixArray[k][j];
+         }
+         productMatrixArray[i][j] = sum;
+      }
+   }
+
+   return productMatrix;
+}
+
+SquareMatrix.prototype.copy = function(matrix) {
+   // Initializations
+   var matrixArray = this.array;
+   var n = this.n;
+
+   // Create a new matrix to hold the copy
+   var copiedMatrix = new SquareMatrix(n);
+   var copiedMatrixArray = copiedMatrix.array;
+
+   for (var i = 0; i < n; i++) {
+      for (var j = 0; j < n; j++) {
+         copiedMatrixArray[i][j] = matrixArray[i][j];
+      }
+   }
+
+   return copiedMatrix;
+}
+
+
+// Mutating methods
+
+SquareMatrix.prototype.fill = function(value) {
+   // Initializations
+   var matrixArray = this.array;
+   var n = this.n;
+                  
+   for (var i = 0; i < n; i++) {
+      for (var j = 0; j < n; j++) {
+         matrixArray[i][j] = value;
+      }
+   }
+
+   // Return nothing
+}
+
+SquareMatrix.prototype.rotateBy90 = function() {
+   // Initializations
+   var matrixArray = this.array;
+   var n = this.n;
+   
+   // Copy the calling matrix using its copy() method
+   var copiedMatrixArray = this.copy().array;
+               
+   for (var i = 0; i < n; i++) {
+      for (var j = 0; j < n; j++) {
+         matrixArray[i][j] = copiedMatrixArray[n - j - 1][i];
+      }
+   }
+
+   // Return nothing
+}
+
+SquareMatrix.prototype.transpose = function() {
+   // Initializations
+   var matrixArray = this.array;
+   var n = this.n;
+                  
+   for (var i = 0; i < n - 1; i++) {
+      for (var j = i + 1; j < n; j++) {
+         temp = matrixArray[i][j];
+         matrixArray[i][j] = matrixArray[j][i];
+         matrixArray[j][i] = temp;
+      }
+   }
+
+   // Return nothing
+}
+
+
+</script>
+
+</body>
+</html>

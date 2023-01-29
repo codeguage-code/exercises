@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Bisection Method Exercise</title>
+</head>
+<body>
+
+<script>
+
+function f(x) {
+   return x ** 2 - 2 * x - 15;
+}
+
+const epsilon = 0.0001;
+function bisection(f, x1, x2) {
+   // First, check for a sign change in the given interval [a, b].
+   // If there is no sign change, then there might not be any root in the given
+   // interval and hence, we must exit rightaway.
+   y1 = f(x1);
+   y2 = f(x2);
+
+   if (y1 * y2 > 0) {
+      return null;
+   }
+   
+   var diff = Math.abs(x1 - x2);
+   var xMid;
+
+   while (diff > epsilon) {
+      xMid = (x1 + x2) / 2;
+      yMid = f(xMid);
+      if (yMid * y1 <= 0) {
+         x2 = xMid;
+      }
+      else {
+         x1 = xMid;
+      }
+      diff = Math.abs(x1 - x2);
+   }
+
+   return Number(xMid.toFixed(3));
+}
+
+</script>
+
+
+</body>
+</html>

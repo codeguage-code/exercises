@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Matrix Rotation Exercise</title>
+</head>
+<body>
+
+<script>
+
+function rotateBy90(matrix) {
+    var n = matrix.length;
+    var matrixCopy = [];
+
+    for (var i = 0; i < n; i++) {
+        matrixCopy.push([]); // add a row
+        for (var j = 0; j < n; j++) {
+            matrixCopy[i].push(matrix[i][j]); // add new entry
+        }
+    }
+                    
+    for (var i = 0; i < n; i++) {
+        for (var j = 0; j < n; j++) {
+            matrix[i][j] = matrixCopy[n - j - 1][i];
+        }
+    }
+
+    return matrix;
+}
+
+</script>
+
+</body>
+</html>

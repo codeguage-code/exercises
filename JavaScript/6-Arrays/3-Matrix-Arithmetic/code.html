@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Matrix Arithmetic Exercise</title>
+</head>
+<body>
+
+<script>
+
+function add(a, b) {
+   var m = a.length,
+       n = a[0].length,
+       sum = []; // this represents a + b
+
+   for (var i = 0; i < m; i++) {
+      sum.push([]);
+      for (var j = 0; j < n; j++) {
+ sum[i].push(a[i][j] + b[i][j]);
+      }
+   }
+
+   return sum;
+}
+
+function multiply(a, b) {
+   var m = a.length,
+       n = a[0].length,
+       p = b[0].length;
+
+   var product = []; // this represents a x b
+
+   for (var i = 0; i < m; i++) {
+      product.push([]);
+      for (var j = 0; j < p; j++) {
+         var sum = 0;
+         for (var k = 0; k < n; k++) {
+            sum += a[i][k] * b[k][j]
+         }
+         product[i].push(sum);
+      }
+   }
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Multiply All Exercise</title>
+</head>
+<body>
+
+<script>
+
+function multiplyAll(arr) {
+   if (arr.length === 0) {
+      return null;
+   }
+
+   var product = 1;
+   for (var i = 0; i < arr.length; i++) {
+      product *= arr[i];
+   }
+
+   return product;
+}
+
+</script>
+
+</body>
+</html>

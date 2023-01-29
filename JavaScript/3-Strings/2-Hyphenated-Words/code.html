@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Hyphenated Words Exercise</title>
+</head>
+<body>
+
+<script>
+
+while (true) {
+   var word = prompt('Enter a hyphenated word:');
+
+   if (word.indexOf('-') !== -1) {
+      var words = word.split('-');
+      for (var i = 0; i < words.length; i++) {
+         document.write(words[i] + '<br>');
+      }
+      break;
+   }
+
+   else alert('Invalid input!');
+}
+
+</script>
+
+</body>
+</html>

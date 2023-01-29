@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Euclidean Distance Exercise</title>
+</head>
+<body>
+
+<script>
+
+function getDistanceCalculator(a) {
+   return function(b) {
+      return (((b[0] - a[0]) ** 2 + (b[1] - a[1]) ** 2) ** 0.5).toFixed(1);
+   }
+}
+
+var distanceFromOrigin = getDistanceCalculator([0, 0]);
+
+console.log(distanceFromOrigin([30, 5]));
+console.log(distanceFromOrigin([8, 8]));
+console.log(distanceFromOrigin([-5, -10]));
+
+
+var distanceFrom5_5 = getDistanceCalculator([5, 5]);
+
+console.log(distanceFrom5_5([10, 2]));
+console.log(distanceFrom5_5([0, 1]));
+console.log(distanceFrom5_5([-90, -1]));
+
+</script>
+
+</body>
+</html>

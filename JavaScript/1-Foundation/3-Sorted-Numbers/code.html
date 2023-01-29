@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Sorted Numbers Exercise</title>
+</head>
+<body>
+
+<script>
+
+var a = prompt('Enter a number:');
+var b = prompt('Enter a number:');
+var c = prompt('Enter a number:');
+
+a = Number(a);
+b = Number(b);
+c = Number(c);
+
+var nums = [a, b, c];
+
+document.write( nums.sort(function(a, b) { return a - b; }) );
+
+</script>
+
+</body>
+</html>

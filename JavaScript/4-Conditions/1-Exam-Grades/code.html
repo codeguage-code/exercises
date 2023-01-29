@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Exam Grades Exercise</title>
+</head>
+<body>
+
+<script>
+
+var score = Number(prompt('Enter the score:'));
+var grade;
+
+if (90 <= score && score <= 100) {
+   grade = 'A';
+}
+else if (75 <= score && score <= 89) {
+   grade = 'B';
+}
+else if (60 <= score && score <= 74) {
+   grade = 'C';
+}
+else if (50 <= score && score <= 59) {
+   grade = 'D';
+}
+else if (40 <= score && score <= 49) {
+   grade = 'E';
+}
+else {
+   grade = 'Invalid value';
+}
+
+alert(grade);
+
+</script>
+
+</body>
+</html>

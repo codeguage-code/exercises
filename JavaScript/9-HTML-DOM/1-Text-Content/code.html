@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Text Content Exercise</title>
+</head>
+<body>
+
+<script>
+
+Object.defineProperty(Node.prototype, 'textContent', {
+   get: function() {
+      var nodeType = this.nodeType;
+
+      if (nodeType === Node.TEXT_NODE || nodeType === Node.COMMENT_NODE) {
+         return this.nodeValue;
+      }
+
+      else if (nodeType === Node.ELEMENT_NODE) {
+         var text = '';
+         var childNodes = this.childNodes;
+
+         for (var i = 0, len = childNodes.length; i < len; i++) {
+            if (childNodes[i].nodeType !== Node.COMMENT_NODE) {
+               text += childNodes[i].textContent;
+            }
+         }
+         return text;
+      }
+   },
+
+   set: function(value) {
+      var nodeType = this.nodeType;
+
+      if (nodeType === Node.TEXT_NODE || nodeType === Node.COMMENT_NODE) {
+         this.nodeValue = value;
+      }
+
+      else if (nodeType === Node.ELEMENT_NODE) {
+         // Remove all children.
+         while (this.firstChild) {
+            this.removeChild(this.firstChild);
+         }
+
+         if (value !== '') {
+            this.appendChild(document.createTextNode(value));
+         }
+      }
+   }
+});
+
+</script>
+
+</body>
+</html>

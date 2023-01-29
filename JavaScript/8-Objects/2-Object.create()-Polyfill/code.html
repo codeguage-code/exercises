@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Object.create() Polyfill Exercise</title>
+</head>
+<body>
+
+<script>
+
+function objectCreatePolyfill(proto) {
+   function F() {}
+   F.prototype = proto;
+
+   return new F();
+}
+
+var a = { x: 10, y: 20 };
+var b = objectCreatePolyfill(a);
+b.x = 500;
+
+console.log(b.x, b.y); // 500 20
+
+</script>
+
+</body>
+</html>

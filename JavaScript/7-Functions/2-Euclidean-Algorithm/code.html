@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Euclidean Algorithm Exercise</title>
+</head>
+<body>
+
+<script>
+
+function gcd(a, b) {
+   var r = a % b;
+   if (r === 0) {
+      return b;
+   }
+   else {
+      return gcd(b, r);
+   }
+}
+
+</script>
+
+</body>
+</html>

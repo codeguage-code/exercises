@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>String Split Exercise - Variation 1</title>
+</head>
+<body>
+
+<script>
+
+function stringSplit(str, delimiter) {
+   var substrings = [];
+   var len = str.length;
+
+   if (delimiter === '') {
+      for (var i = 0; i < len; i++) {
+         substrings.push(str[i]);
+      }
+      return substrings;
+   }
+
+   var index = 0; // The index-tracking variable.
+   for (var i = 0; i < len; i++) {
+      if (str[i] === delimiter) {
+         substrings.push(str.slice(index, i));
+         index = i + 1;
+      }
+   }
+   substrings.push(str.slice(index));
+
+   return substrings;
+}
+
+console.log(stringSplit('a|b|c', '|'));
+console.log(stringSplit('a b c', ' '));
+console.log(stringSplit('a, b, c', ''));
+
+</script>
+
+</body>
+</html>

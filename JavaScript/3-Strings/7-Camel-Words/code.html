@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Title Casing Exercise</title>
+</head>
+<body>
+
+<script>
+
+function getWords(str) {
+   if (str === '') {
+      return [];
+   }
+
+   var words = [];
+   var index = 0;
+   for (var i = 0, len = str.length; i < len; i++) {
+      if ('A' <= str[i] && str[i] <= 'Z'
+      && ('a' <= str[i - 1] && str[i - 1] <= 'z'
+      || 'a' <= str[i + 1] && str[i + 1] <= 'z'))
+      {
+         words.push(str.slice(index, i));
+         index = i;
+      }
+   }
+   words.push(str.slice(index));
+
+   return words;
+}
+
+console.log(getWords('helloWorld'));
+console.log(getWords('innerHTML'));
+console.log(getWords('lastHTMLElement'));
+console.log(getWords('insertAdjacentHTML'));
+
+</script>
+
+</body>
+</html>

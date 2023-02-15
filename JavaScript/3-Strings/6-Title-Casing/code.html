@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Title Casing Exercise</title>
+</head>
+<body>
+
+<script>
+
+function toTitleCase(str) {
+   var words = str.split(' ');
+
+   for (var i = 0, len = words.length; i < len; i++) {
+      words[i] = words[i] && words[i][0].toUpperCase() + words[i].slice(1);
+   }
+
+   var titleCasedStr = words[0];
+   for (i = 1; i < len; i++) {
+      titleCasedStr += ' ' + words[i];
+   }
+
+   return titleCasedStr;
+}
+
+console.log(toTitleCase('This is great.'));
+console.log(toTitleCase('An awe-inspiring story!'));
+
+</script>
+
+</body>
+</html>

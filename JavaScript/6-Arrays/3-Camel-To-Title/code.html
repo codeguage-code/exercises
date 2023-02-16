@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Camel To Title Exercise</title>
+</head>
+<body>
+
+<script>
+
+function getWords(str) {
+   if (str === '') {
+      return [];
+   }
+
+   var words = [];
+   var index = 0;
+   for (var i = 0, len = str.length; i < len; i++) {
+      if ('A' <= str[i] && str[i] <= 'Z'
+      && ('a' <= str[i - 1] && str[i - 1] <= 'z'
+      || 'a' <= str[i + 1] && str[i + 1] <= 'z'))
+      {
+         words.push(str.slice(index, i));
+         index = i;
+      }
+   }
+   words.push(str.slice(index));
+
+   return words;
+}
+
+function camelToTitleCase(str) {
+   if (str === '') {
+      return '';
+   }
+
+   var words = getWords(str);
+   // Uppercase the first letter of the first word.
+   words[0] = words[0][0].toUpperCase() + words[0].slice(1);
+   
+   return words.join(' ');
+}
+
+console.log(camelToTitleCase('insertHTML'));
+console.log(camelToTitleCase('insertAdjacentHTML'));
+console.log(camelToTitleCase('firstHTMLElement'));
+console.log(camelToTitleCase('releaseDate'));
+console.log(camelToTitleCase(''));
+
+</script>
+
+</body>
+</html>

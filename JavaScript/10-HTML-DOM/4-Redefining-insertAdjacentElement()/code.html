@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Redefining insertAdjacentElement() Exercise</title>
+</head>
+<body>
+
+<script>
+
+Element.prototype.insertAdjacentElement = function(position, element) {
+   if (!(element instanceof Element)) {
+      throw new TypeError('Invalid second argument provided. It must implement the Element interface.');
+   }
+
+   switch (position) {
+      case 'beforebegin':
+         // Insert element before this node (i.e. the calling element node),
+         // as its previous sibling.
+         this.parentNode.insertBefore(element, this);
+         break;
+
+      case 'afterbegin':
+         // Insert element as the first child of this node.
+         this.insertBefore(element, this.childNodes[0]);
+         break;
+
+      case 'beforeend':
+         // Insert element as the last child of this node.
+         this.insertBefore(element, null);
+         break;
+
+      case 'afterend':
+         // Insert element after this node, as its next sibling.
+         this.parentNode.insertBefore(element, this.nextSibling);
+         break;
+
+      default:
+         throw new SyntaxError("Invalid first argument provided. It must be one of the four values: 'beforebegin', 'afterbegin', 'beforeend', 'afterend'.");
+   }
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Redefining firstElementChild Exercise</title>
+</head>
+<body>
+
+<script>
+
+Object.defineProperty(Element.prototype, 'firstElementChild', {
+   get: function() {
+      var element = this.firstChild;
+      while (element && !(element instanceof Element)) {
+         element = element.nextSibling;
+      }
+      return element;
+   }
+});
+
+</script>
+
+</body>
+</html>

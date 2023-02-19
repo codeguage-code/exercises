@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Redefining className Exercise</title>
+   <style>
+      .text-blue {color: blue}
+   </style>
+</head>
+<body>
+
+<h1>Hello World!</h1>
+
+<script>
+
+Object.defineProperty(Element.prototype, 'className', {
+   get: function() {
+      console.log('Getter invoked');
+      return this.getAttribute('class');
+   },
+   set: function(value) {
+      console.log('Setter invoked');
+      this.setAttribute('class', value);
+   }
+});
+
+</script>
+
+<!-- Test the code above -->
+<script>
+var h1Element = document.querySelector('h1');
+
+// Add the class 'text-blue'.
+h1Element.className = 'text-blue';
+</script>
+
+</body>
+</html>

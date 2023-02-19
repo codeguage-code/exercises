@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Building Tables Exercise - Variant 1</title>
+   <style>
+      table {border-collapse: collapse;text-align: left;}
+      th, td {border: 1px solid black}
+   </style>
+</head>
+<body>
+
+<div id="main"></div>
+
+<script>
+
+function getWords(str) {
+   if (str === '') {
+      return [];
+   }
+
+   var words = [];
+   var index = 0;
+   for (var i = 0, len = str.length; i < len; i++) {
+      if ('A' <= str[i] && str[i] <= 'Z'
+      && ('a' <= str[i - 1] && str[i - 1] <= 'z'
+      || 'a' <= str[i + 1] && str[i + 1] <= 'z'))
+      {
+         words.push(str.slice(index, i));
+         index = i;
+      }
+   }
+   words.push(str.slice(index));
+
+   return words;
+}
+
+function camelToTitleCase(str) {
+   if (str === '') {
+      return '';
+   }
+
+   var words = getWords(str);
+   // Uppercase the first letter of the first word.
+   words[0] = words[0][0].toUpperCase() + words[0].slice(1);
+   
+   return words.join(' ');
+}
+
+function createTable(arr, element) {
+   var keys = Object.keys(arr[0]);
+   var html = '<table>';
+
+   // Create the header of the table.
+   html += '<tr>' + keys.map(function(key) {
+      return '<th>' + camelToTitleCase(key) + '</th>';
+   }).join('') + '</tr>';
+
+   // Create the rest of the rows.
+   html += arr.map(function(item) {
+      return '<tr>' + keys.map(function(key) {
+         return '<td>' + item[key] + '</td>';
+      }).join('') + '</tr>';
+   }).join('');
+
+   html += '</table>';
+   element.innerHTML = html;
+}
+
+</script>
+
+<!-- Test the code above with an example -->
+<script>
+   var languages = [
+   {name: 'JavaScript', releaseDate: 1995, fileExtension: '.js', creator: 'Brendan Eich'},
+   {name: 'Java', releaseDate: 1995, fileExtension: '.java', creator: 'James Gosling'},
+   {name: 'PHP', releaseDate: 1995, fileExtension: '.php', creator: 'Rasmus Lerdorf'},
+   {name: 'C++', releaseDate: 1985, fileExtension: '.cpp', creator: 'Bjarne Stroustrup'},
+];
+
+var mainElement = document.getElementById('main');
+createTable(languages, mainElement);
+</script>
+
+</body>
+</html>

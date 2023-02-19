@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>HTML Serialization Exercise</title>
+</head>
+<body>
+
+<div id="main">
+   <p>A paragraph</p>
+   <div data-id="100" class="text-blue">A div</div>
+   <!--A comment-->
+</div>
+
+<script>
+
+Element.prototype.getInnerHTML = function() {
+   var html = '';
+
+   for (var i = 0, len = this.childNodes.length; i < len; i++) {
+      var node = this.childNodes[i];
+
+      if (node instanceof Element) {
+         var tagName = node.tagName.toLowerCase();
+         var attributesArray = Array.prototype.slice.call(node.attributes);
+         var attributesStr = attributesArray.map(function(attribute) {
+            return attribute.name + '="' + attribute.value + '"';
+         }).join(' ');
+         attributesStr = attributesStr === '' ? '' : (' ' + attributesStr);
+
+         html += '<' + tagName + attributesStr + '>' +
+                 node.getInnerHTML() +
+                 '</' + tagName + '>';
+      }
+
+      else if (node instanceof Text) {
+         html += node.nodeValue;
+      }
+
+      else {
+         html += '<!--' + node.nodeValue + '-->';
+      }
+   }
+
+   return html;
+}
+
+</script>
+
+<!-- Test the code above -->
+<script>
+var mainElement = document.getElementById('main');
+console.log(mainElement.innerHTML);
+console.log(mainElement.getInnerHTML());
+console.log(mainElement.innerHTML === mainElement.getInnerHTML());
+</script>
+
+</body>
+</html>

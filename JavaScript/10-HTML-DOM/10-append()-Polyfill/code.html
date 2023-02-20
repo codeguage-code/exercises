@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>append() Polyfill Exercise</title>
+</head>
+<body>
+
+<div id="main" style="border: 1px solid red;">
+   <h1>A heading</h1>
+</div>
+
+
+<script>
+
+Element.prototype.append = function() {
+   var fragment = document.createDocumentFragment();
+
+   for (var i = 0, len = arguments.length; i < len; i++) {
+      fragment.appendChild(
+         arguments[i] instanceof Node
+         ? arguments[i]
+         : document.createTextNode(String(arguments[i]))
+      );
+   }
+
+   // Since this method is append(), dump fragment into the
+   // last-child position of the calling element node.
+   this.appendChild(fragment);
+}
+
+</script>
+
+<!-- Test the code above -->
+<script>
+
+var h2Element = document.createElement('h2');
+h2Element.textContent = 'A smaller heading';
+
+var italicElement = document.createElement('i');
+italicElement.textContent = 'italic text';
+
+var mainElement = document.getElementById('main');
+mainElement.append(h2Element, 'Simple ', italicElement);
+
+</script>
+
+</body>
+</html>
